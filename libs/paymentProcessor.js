@@ -1,5 +1,5 @@
 var fs = require('fs');
-var redis = require('redis');
+var CreateRedisClient = require('./createRedisClient.js');
 var async = require('async');
 var Stratum = require('stratum-pool');
 var util = require('stratum-pool/lib/util.js');
@@ -98,7 +98,11 @@ function SetupForPool(poolOptions, setupFinished) {
 	const logger = loggerFactory.getLogger('PaymentProcessor', coin);
 	var processingConfig = poolOptions.paymentProcessing;
 	var daemon = new Stratum.daemon.interface([processingConfig.daemon], loggerFactory.getLogger('CoinDaemon', coin));
-	var redisClient = redis.createClient(poolOptions.redis.port, poolOptions.redis.host);
+	var connection = CreateRedisClient(redisConfig);
+	if (redisConfig.password) {
+		connection.auth(redisConfig.password);
+	}
+
 	var totalCoinFees = getTotalFees(coin);
 	logger.debug('PP> FEE % = %s', coin.toUpperCase(), totalCoinFees.toString(10)); 
 	var coinPrecision = getCoinPrecision(coin);
@@ -209,7 +213,7 @@ function SetupForPool(poolOptions, setupFinished) {
 					}
 					if (finalRedisCommands.length <= 0)
 					return;
-					redisClient.multi(finalRedisCommands).exec(function(error, results) {
+					connection.multi(finalRedisCommands).exec(function(error, results) {
 						if (error) {
 							logger.error('PP>ERROR> Error with redis during call to cacheNetworkStats() ' + JSON.stringify(error));
 							return;
@@ -246,7 +250,7 @@ var processPayments = function() {
 		function(callback) {
 			logger.debug("WATERFALL START - Calling redis for array of rounds");
 			startRedisTimer();
-			redisClient.multi([
+			connection.multi([
 				['hgetall', coin + ':balances'],
 				['smembers', coin + ':blocksPending']
 			]).exec(function(error, results) {
@@ -314,7 +318,7 @@ var processPayments = function() {
 					rounds = rounds.filter(function(round){ return !round.duplicate; });
 					if (invalidBlocks.length > 0) {
 						startRedisTimer();
-						redisClient.multi(invalidBlocks).exec(function(error, kicked) {
+						connection.multi(invalidBlocks).exec(function(error, kicked) {
 							endRedisTimer();
 							if (error) {
 								logger.error('PP>ATTN> Error could not move invalid duplicate blocks in redis %s', JSON.stringify(error));
@@ -425,7 +429,7 @@ var processPayments = function() {
 		});
 		logger.silly('WATERFALL> Calling redis for %s', JSON.stringify(shareLookups));
 		startRedisTimer();
-		redisClient.multi(shareLookups).exec(function(error, allWorkerShares) {
+		connection.multi(shareLookups).exec(function(error, allWorkerShares) {
 			endRedisTimer();
 			logger.silly('WATERFALL> Response from redis allWorkerShares = %s', JSON.stringify(allWorkerShares));
 			if (error) {
@@ -741,7 +745,7 @@ function(workers, rounds, paymentsUpdate, callback) {
 	}
 	logger.silly("PP> finalRedisCommands %s", finalRedisCommands);
 	startRedisTimer();
-	redisClient.multi(finalRedisCommands).exec(function(error, results) {
+	connection.multi(finalRedisCommands).exec(function(error, results) {
 		endRedisTimer();
 		if (error) {
 			clearInterval(paymentInterval);

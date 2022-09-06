@@ -1,5 +1,5 @@
 var Stratum = require('stratum-pool');
-var redis = require('redis');
+var CreateRedisClient = require('./createRedisClient.js');
 var net = require('net');
 const functions = require('./functions.js');
 var MposCompatibility = require('./mposCompatibility.js');
@@ -14,7 +14,10 @@ module.exports = function() {
 	var forkId = process.env.forkId;
 	var pools = {};
 	var proxySwitch = {};
-	var redisClient = redis.createClient(portalConfig.redis.port, portalConfig.redis.host);
+	var connection = CreateRedisClient(redisConfig);
+	if (redisConfig.password) {
+		connection.auth(redisConfig.password);
+	}
 	process.on('message', function(message) {
 		switch (message.type) {
 			case 'banIP':
@@ -54,7 +57,7 @@ module.exports = function() {
 				}
 			);
 			proxySwitch[switchName].currentPool = newCoin;
-			redisClient.hset('proxyState', algo, newCoin, function(error, obj) {
+			connection.hset('proxyState', algo, newCoin, function(error, obj) {
 				if (error) {
 					logger.error('Redis error writing proxy config, err = %s', JSON.stringify(err))
 				} else {
@@ -225,7 +228,7 @@ module.exports = function() {
 		let logger = loggerFactory.getLogger(`SwitchingSetup[:${(parseInt(forkId) + 1)}]`, 'system');
 		var proxyState = {};
 		logger.debug('Loading last proxy state from redis');
-		redisClient.hgetall("proxyState", function(error, obj) {
+		connection.hgetall("proxyState", function(error, obj) {
 			if (!error && obj) {
 				proxyState = obj;
 				logger.debug('Last proxy state loaded from redis');

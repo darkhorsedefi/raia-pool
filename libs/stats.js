@@ -1,5 +1,5 @@
 var zlib = require('zlib');
-var redis = require('redis');
+var CreateRedisClient = require('./createRedisClient.js');
 var async = require('async');
 var os = require('os');
 var algos = require('stratum-pool/lib/algoProperties.js');
@@ -52,13 +52,21 @@ module.exports = function(portalConfig, poolConfigs) {
 				return;
 			}
 		}
-		redisClients.push({
+		var obj = {
 			coins: [coin],
-			client: redis.createClient(redisConfig.port, redisConfig.host)
-		});
+			client: CreateRedisClient(redisConfig)
+		}
+		if (redisConfig.password) {
+			obj.client.auth(redisConfig.password);
+		}
+		redisClients.push(obj);
+
 	});
 	function setupStatsRedis() {
-		redisStats = redis.createClient(portalConfig.redis.port, portalConfig.redis.host);
+		redisStats = CreateRedisClient(portalConfig.redis);
+		if (portalConfig.redis.password) {
+			redisStats.auth(redisConfig.password);
+		}
 		redisStats.on('error', function(err) {
 			logger.error('Stats Redis Encountered An Error! Message: %s', JSON.stringify(err));
 		});
