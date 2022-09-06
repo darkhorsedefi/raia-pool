@@ -51,54 +51,6 @@ module.exports = function(poolConfig) {
 		}
 	});
 
-	var poolConfigs = JSON.parse(process.env.pools);
-	var poolOptions = poolConfigs[coin];
-	var processingConfig = poolOptions.paymentProcessing;
-	var daemon = new Stratum.daemon.interface([processingConfig.daemon], function(severity, message){
-		logger[severity](logSystem, logComponent, message);
-	});
-
-	function getReward(txHash, callback){
-		daemon.cmd('gettransaction', [txHash], function (result) {
-			if (!result || result[0].error) {
-				callback(result[0].error, null);
-				return;
-			}
-			if (!result[0].response
-				|| !result[0].response.details
-				|| !result[0].response.details[0]
-				|| !result[0].response.details[0].amount) {
-				callback('No response or no details in response', null);
-				return;
-			}
-
-			let fee = 0;
-			if (poolOptions.rewardRecipients) {
-				for (let key of Object.keys(poolOptions.rewardRecipients)) {
-					fee += +poolOptions.rewardRecipients[key];
-				}
-			}
-			callback(null, result[0].response.details[0].amount * 100 / (100 - fee));
-			return;
-		});
-	}
-
-	function getDifficulty(callback){
-		daemon.cmd('getdifficulty', [], function (result) {
-			if (!result || result[0].error) {
-				callback(result[0].error, null);
-				return;
-			}
-			if (!result[0].response) {
-				callback('No response or no details in response', null);
-				return;
-			}
-
-			callback(null, result[0].response);
-			return;
-		});
-	}
-
 	function getShares(callback){
 		var localRedisCommands = [
 			['hgetall', coin + ':shares:roundCurrent']
@@ -134,6 +86,7 @@ module.exports = function(poolConfig) {
 		var dateNow = Date.now();
 		var hashrateData = [ isValidShare ? shareData.difficulty : -shareData.difficulty, shareData.worker, dateNow];
 		redisCommands.push(['zadd', coin + ':hashrate', dateNow / 1000 | 0, hashrateData.join(':')]);
+
 		if (isValidBlock) {
 			redisCommands.push(['rename', coin + ':shares:roundCurrent', coin + ':shares:round' + shareData.height]);
 			redisCommands.push(['rename', coin + ':shares:timesCurrent', coin + ':shares:times' + shareData.height]);
@@ -146,12 +99,6 @@ module.exports = function(poolConfig) {
 
 			// console.log(`Found valid ${coin} block`, shareData)
 			async.parallel({
-				reward: ((cb) => {
-					getReward(shareData.txHash, cb)
-				}),
-				difficulty: ((cb) => {
-					getDifficulty(cb)
-				}),
 				shares: ((cb) => {
 					getShares(cb)
 				}),
@@ -160,12 +107,12 @@ module.exports = function(poolConfig) {
 				// console.log('res', res)
 				if (err) {
 					logger.error(logSystem, logComponent, logSubCat, err);
-					redisCommands.push(['sadd', coin + ':blocksPending', [shareData.blockHash, shareData.txHash, shareData.height, shareData.worker, dateNow].join(':')]);
+					redisCommands.push(['sadd', coin + ':blocksPending', [shareData.blockHash, shareData.txHash, shareData.height, shareData.worker, dateNow, shareData.blockReward].join(':')]);
 					// redisCommands.push(['sadd', coin + ':blocksPending', [shareData.blockHash, shareData.txHash, shareData.height].join(':')]);
 				} else {
 					logger.debug(logSystem, logComponent, logSubCat, `Successfully requested reward for block ${shareData.blockHash}`);
-					var blockEffort = Math.floor(res.shares / res.difficulty * Math.pow(10, 4)) / Math.pow(10, 4);
-					redisCommands.push(['sadd', coin + ':blocksPending', [shareData.blockHash, shareData.txHash, shareData.height, shareData.worker, dateNow, res.reward, blockEffort].join(':')]);
+					var blockEffort = Math.floor(res.shares / shareData.blockDiff * Math.pow(10, 4)) / Math.pow(10, 4);
+					redisCommands.push(['sadd', coin + ':blocksPending', [shareData.blockHash, shareData.txHash, shareData.height, shareData.worker, dateNow, shareData.blockReward, blockEffort].join(':')]);
 				}
 
 				// console.log('exec next commands', redisCommands)

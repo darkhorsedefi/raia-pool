@@ -81,5 +81,10 @@
     },
     "engines": {
         "node": ">=8.17.0"
+    },
+    "scripts": {
+        "start": "sed -i 's#.*console.log(\"In BlockTemplate difficulty is \"+this.difficulty);#\\t//console.log(\"In BlockTemplate difficulty is \"+this.difficulty);#' node_modules/stratum-pool/lib/blockTemplate.js; sed -i 's#.*console.log(\"JOB: \"+JSON.stringify(job));#\\t//console.log(\"JOB: \"+JSON.stringify(job));#' node_modules/stratum-pool/lib/jobManager.js; sed -i 's#.*console.log(\"Using \"+options.kawpow_validator+\" for validation.\");#\\t//console.log(\"Using \"+options.kawpow_validator+\" for validation.\");#' node_modules/stratum-pool/lib/jobManager.js; node init.js"
     }
 }
+
+

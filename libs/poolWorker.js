@@ -15,8 +15,8 @@ module.exports = function() {
 	var pools = {};
 	var proxySwitch = {};
 	var connection = CreateRedisClient(portalConfig.redis);
-	if (redisConfig.password) {
-		connection.auth(redisConfig.password);
+	if (portalConfig.redis.password) {
+		connection.auth(portalConfig.redis.password);
 	}
 	process.on('message', function(message) {
 		switch (message.type) {
@@ -163,6 +163,7 @@ module.exports = function() {
 			logger.debug("forkId %s", forkId);
 			var shareDataJsonStr = JSON.stringify(data);
 			if (data.blockHash && !isValidBlock) {
+
 				if (workerInfo.length === 2) {
 					logger.info('BLOCK>REJECTED> Found block rejected by the daemon, share data: %s' + shareDataJsonStr);
 				} else {
@@ -184,8 +185,8 @@ module.exports = function() {
 					} else if (data.shareDiff > 1000000) {
 						logger.warn('SHARE>WARN> Share was found with diff higher than 1.000.000!');
 					}
-					logger.info('SHARE>ACCEPTED> job: %s req: %s res: %s by %s worker: %s [%s]', data.job, data.difficulty, data.shareDiff, workerInfo[0], workerInfo[1], functions.anonymizeIP(data.ip));                
-				} 
+					logger.info('SHARE>ACCEPTED> job: %s req: %s res: %s by %s worker: %s [%s]', data.job, data.difficulty, data.shareDiff, workerInfo[0], workerInfo[1], functions.anonymizeIP(data.ip));
+				}
 				else if (!isValidShare) {
 					logger.info('SHARE>REJECTED> job: %s diff: %s by %s worker: %s reason: %s [%s]', data.job, data.difficulty, workerInfo[0], workerInfo[1], data.error, functions.anonymizeIP(data.ip));
 				}
@@ -213,6 +214,7 @@ module.exports = function() {
 			handlers.diff(workerName, diff);
 		}).on('log', function(severity, text) {
 			logger.info(text);
+
 		}).on('banIP', function(ip, worker) {
 			process.send({
 				type: 'banIP',
