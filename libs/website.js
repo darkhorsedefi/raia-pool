@@ -121,7 +121,7 @@ module.exports = function () {
 			function (callback) {
 				var client = CreateRedisClient(portalConfig.redis);
 				if (portalConfig.redis.password) {
-					client.auth(redisConfig.password);
+					client.auth(portalConfig.redis.password);
 				}
 				client.hgetall('coinVersionBytes', function (err, coinBytes) {
 					if (err) {
