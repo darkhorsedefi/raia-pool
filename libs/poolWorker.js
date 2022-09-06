@@ -14,7 +14,7 @@ module.exports = function() {
 	var forkId = process.env.forkId;
 	var pools = {};
 	var proxySwitch = {};
-	var connection = CreateRedisClient(redisConfig);
+	var connection = CreateRedisClient(portalConfig.redis);
 	if (redisConfig.password) {
 		connection.auth(redisConfig.password);
 	}
