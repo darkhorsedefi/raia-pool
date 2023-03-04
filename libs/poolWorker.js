@@ -197,7 +197,7 @@ module.exports = function() {
 					} else if (data.shareDiff > 1000000) {
 						logger.warn('SHARE>WARN> Share was found with diff higher than 1.000.000!');
 					}
-					logger.info('SHARE>ACCEPTED> job: %s req: %s res: %s by %s worker: none [%s]', data.job, data.difficulty, data.shareDiff, workerStr, functions.anonymizeIP(data.ip));                
+					logger.info('SHARE>ACCEPTED> job: %s req: %s res: %s by %s worker: none [%s]', data.job, data.difficulty, data.shareDiff, workerStr, functions.anonymizeIP(data.ip));
 				} else if (!isValidShare) {
 					logger.info('SHARE>REJECTED> job: %s diff: %s by %s worker: none reason: %s [%s]', data.job, data.difficulty, workerStr, data.error, functions.anonymizeIP(data.ip));
 				}

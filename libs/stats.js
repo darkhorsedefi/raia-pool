@@ -66,7 +66,7 @@ module.exports = function(portalConfig, poolConfigs) {
 		redisStats = CreateRedisClient(portalConfig.redis);
 		if (portalConfig.redis.password) {
 			redisStats.auth(portalConfig.redis.password);
-		}
+	Ф	}
 		redisStats.on('error', function(err) {
 			logger.error('Stats Redis Encountered An Error! Message: %s', JSON.stringify(err));
 		});
