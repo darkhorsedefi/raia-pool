@@ -144,7 +144,7 @@ module.exports = function() {
 				shareProcessor.handleShare(isValidShare, isValidBlock, data);
 			};
 		}
-		var authorizeFN = function(ip, port, workerName, password, extraNonce1, version, callback) {
+		var authorizeFN = function(ip, port, workerName, password, callback) {
 			handlers.auth(port, workerName, password, function(authorized) {
 				var authString = authorized ? 'Authorized' : 'Unauthorized ';
 				logger.debug('AUTH>TRUE> authstr [%s] worker [%s] passwd [%s] ip [%s]', authString, workerName, password, functions.anonymizeIP(ip));
