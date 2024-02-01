@@ -39,9 +39,9 @@
     	    }
         },
 		"10002": {
-            "diff": 0.5,
+            "diff": 1,
     	    "varDiff": {
-    	        "minDiff": 0.01,
+    	        "minDiff": 0.5,
     	        "maxDiff": 32,
     	        "targetTime": 10,
     	        "retargetTime": 60,
@@ -50,9 +50,9 @@
     	    }
         },
 		"10003": {
-            "diff": 0.10,
+            "diff": 5,
     	    "varDiff": {
-    	        "minDiff": 0.1,
+    	        "minDiff": 2.5,
     	        "maxDiff": 32,
     	        "targetTime": 10,
     	        "retargetTime": 60,
@@ -61,54 +61,10 @@
     	    }
         },
 		"10004": {
-            "diff": 0.15,
+            "diff": 1024,
     	    "varDiff": {
-    	        "minDiff": 0.5,
-    	        "maxDiff": 32,
-    	        "targetTime": 10,
-    	        "retargetTime": 60,
-    	        "variancePercent": 30,
-    		    "maxJump": 25
-    	    }
-        },
-		"10005": {
-            "diff": 1,
-    	    "varDiff": {
-    	        "minDiff": 1,
-    	        "maxDiff": 32,
-    	        "targetTime": 10,
-    	        "retargetTime": 60,
-    	        "variancePercent": 30,
-    		    "maxJump": 25
-    	    }
-        },
-		"10006": {
-            "diff": 2,
-    	    "varDiff": {
-    	        "minDiff": 2,
-    	        "maxDiff": 32,
-    	        "targetTime": 10,
-    	        "retargetTime": 60,
-    	        "variancePercent": 30,
-    		    "maxJump": 25
-    	    }
-        },
-		"10007": {
-            "diff": 4,
-    	    "varDiff": {
-    	        "minDiff": 4,
-    	        "maxDiff": 64,
-    	        "targetTime": 10,
-    	        "retargetTime": 60,
-    	        "variancePercent": 30,
-    		    "maxJump": 25
-    	    }
-        },
-		"10008": {
-            "diff": 0.5,
-    	    "varDiff": {
-    	        "minDiff": 0.5,
-    	        "maxDiff": 32,
+    	        "minDiff": 1024,
+    	        "maxDiff": null,
     	        "targetTime": 10,
     	        "retargetTime": 60,
     	        "variancePercent": 30,
