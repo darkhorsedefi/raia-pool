@@ -1,0 +1,9 @@
+{
+    "name": "raianetwork",
+    "symbol": "RAIA",
+    "algorithm": "kawpow",
+
+    "blockTime": 60,
+    "blockChange": 1
+
+}

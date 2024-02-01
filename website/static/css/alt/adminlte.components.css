@@ -384,7 +384,7 @@ body.text-sm .input-group-text {
 }
 
 .custom-switch.custom-switch-off-dark .custom-control-input ~ .custom-control-label::before {
-  background-color: #343a40;
+  background-color: #1a1a1a;
   border-color: #060708;
 }
 
@@ -397,7 +397,7 @@ body.text-sm .input-group-text {
 }
 
 .custom-switch.custom-switch-on-dark .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: #343a40;
+  background-color: #1a1a1a;
   border-color: #060708;
 }
 
@@ -878,7 +878,7 @@ body.text-sm .input-group-text {
 }
 
 .custom-switch.custom-switch-off-gray-dark .custom-control-input ~ .custom-control-label::before {
-  background-color: #343a40;
+  background-color: #1a1a1a;
   border-color: #060708;
 }
 
@@ -891,7 +891,7 @@ body.text-sm .input-group-text {
 }
 
 .custom-switch.custom-switch-on-gray-dark .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: #343a40;
+  background-color: #1a1a1a;
   border-color: #060708;
 }
 
@@ -1200,7 +1200,7 @@ body.text-sm .input-group-text {
 }
 
 .custom-range.custom-range-dark::-webkit-slider-thumb {
-  background-color: #343a40;
+  background-color: #1a1a1a;
 }
 
 .custom-range.custom-range-dark::-webkit-slider-thumb:active {
@@ -1208,7 +1208,7 @@ body.text-sm .input-group-text {
 }
 
 .custom-range.custom-range-dark::-moz-range-thumb {
-  background-color: #343a40;
+  background-color: #1a1a1a;
 }
 
 .custom-range.custom-range-dark::-moz-range-thumb:active {
@@ -1216,7 +1216,7 @@ body.text-sm .input-group-text {
 }
 
 .custom-range.custom-range-dark::-ms-thumb {
-  background-color: #343a40;
+  background-color: #1a1a1a;
 }
 
 .custom-range.custom-range-dark::-ms-thumb:active {
@@ -1960,7 +1960,7 @@ body.text-sm .input-group-text {
 }
 
 .custom-range.custom-range-gray-dark::-webkit-slider-thumb {
-  background-color: #343a40;
+  background-color: #1a1a1a;
 }
 
 .custom-range.custom-range-gray-dark::-webkit-slider-thumb:active {
@@ -1968,7 +1968,7 @@ body.text-sm .input-group-text {
 }
 
 .custom-range.custom-range-gray-dark::-moz-range-thumb {
-  background-color: #343a40;
+  background-color: #1a1a1a;
 }
 
 .custom-range.custom-range-gray-dark::-moz-range-thumb:active {
@@ -1976,7 +1976,7 @@ body.text-sm .input-group-text {
 }
 
 .custom-range.custom-range-gray-dark::-ms-thumb {
-  background-color: #343a40;
+  background-color: #1a1a1a;
 }
 
 .custom-range.custom-range-gray-dark::-ms-thumb:active {
@@ -2166,8 +2166,8 @@ body.text-sm .input-group-text {
 }
 
 .custom-control-input-dark:checked ~ .custom-control-label::before {
-  border-color: #343a40;
-  background-color: #343a40;
+  border-color: #1a1a1a;
+  background-color: #1a1a1a;
 }
 
 .custom-control-input-dark.custom-control-input-outline:checked[type="checkbox"] ~ .custom-control-label::after {
@@ -2660,8 +2660,8 @@ body.text-sm .input-group-text {
 }
 
 .custom-control-input-gray-dark:checked ~ .custom-control-label::before {
-  border-color: #343a40;
-  background-color: #343a40;
+  border-color: #1a1a1a;
+  background-color: #1a1a1a;
 }
 
 .custom-control-input-gray-dark.custom-control-input-outline:checked[type="checkbox"] ~ .custom-control-label::after {
@@ -2700,7 +2700,7 @@ body.text-sm .input-group-text {
 .dark-mode .custom-file-label::after,
 .dark-mode .custom-control-label::before,
 .dark-mode .input-group-text {
-  background-color: #343a40;
+  background-color: #1a1a1a;
   color: #fff;
 }
 
@@ -2709,7 +2709,7 @@ body.text-sm .input-group-text {
 }
 
 .dark-mode select {
-  background-color: #343a40;
+  background-color: #1a1a1a;
   color: #fff;
   border-color: #6c757d;
 }
@@ -2739,7 +2739,7 @@ body.text-sm .input-group-text {
 
 .dark-mode .navbar-dark .btn-navbar,
 .dark-mode .navbar-dark .form-control-navbar {
-  background-color: #343a40;
+  background-color: #1a1a1a;
   border: 1px solid #6c757d;
 }
 
@@ -3312,7 +3312,7 @@ body.text-sm .input-group-text {
 }
 
 .card-dark:not(.card-outline) > .card-header {
-  background-color: #343a40;
+  background-color: #1a1a1a;
 }
 
 .card-dark:not(.card-outline) > .card-header,
@@ -3325,7 +3325,7 @@ body.text-sm .input-group-text {
 }
 
 .card-dark.card-outline {
-  border-top: 3px solid #343a40;
+  border-top: 3px solid #1a1a1a;
 }
 
 .card-dark.card-outline-tabs > .card-header a:hover {
@@ -3333,7 +3333,7 @@ body.text-sm .input-group-text {
 }
 
 .card-dark.card-outline-tabs > .card-header a.active {
-  border-top: 3px solid #343a40;
+  border-top: 3px solid #1a1a1a;
 }
 
 .bg-dark .btn-tool,
@@ -4661,7 +4661,7 @@ body.text-sm .input-group-text {
 }
 
 .card-gray-dark:not(.card-outline) > .card-header {
-  background-color: #343a40;
+  background-color: #1a1a1a;
 }
 
 .card-gray-dark:not(.card-outline) > .card-header,
@@ -4674,7 +4674,7 @@ body.text-sm .input-group-text {
 }
 
 .card-gray-dark.card-outline {
-  border-top: 3px solid #343a40;
+  border-top: 3px solid #1a1a1a;
 }
 
 .card-gray-dark.card-outline-tabs > .card-header a:hover {
@@ -4682,7 +4682,7 @@ body.text-sm .input-group-text {
 }
 
 .card-gray-dark.card-outline-tabs > .card-header a.active {
-  border-top: 3px solid #343a40;
+  border-top: 3px solid #1a1a1a;
 }
 
 .bg-gray-dark .btn-tool,
@@ -5132,7 +5132,7 @@ html.maximized-card {
 }
 
 .todo-list .dark {
-  border-left-color: #343a40;
+  border-left-color: #1a1a1a;
 }
 
 .todo-list .lightblue {
@@ -5208,7 +5208,7 @@ html.maximized-card {
 }
 
 .todo-list .gray-dark {
-  border-left-color: #343a40;
+  border-left-color: #1a1a1a;
 }
 
 .todo-list .handle {
@@ -5226,7 +5226,7 @@ html.maximized-card {
 }
 
 .dark-mode .card {
-  background-color: #343a40;
+  background-color: #1a1a1a;
   color: #fff;
 }
 
@@ -5283,7 +5283,7 @@ html.maximized-card {
 
 .modal-content.bg-warning .modal-header,
 .modal-content.bg-warning .modal-footer {
-  border-color: #343a40;
+  border-color: #1a1a1a;
 }
 
 .modal-content.bg-primary .close, .modal-content.bg-secondary .close, .modal-content.bg-info .close, .modal-content.bg-danger .close, .modal-content.bg-success .close {
@@ -5297,7 +5297,7 @@ html.maximized-card {
 }
 
 .dark-mode .modal-content {
-  background-color: #343a40;
+  background-color: #1a1a1a;
 }
 
 .dark-mode .modal-content.bg-warning .modal-header,
@@ -5306,7 +5306,7 @@ html.maximized-card {
 }
 
 .dark-mode .modal-content.bg-warning .close {
-  color: #343a40 !important;
+  color: #1a1a1a !important;
   text-shadow: 0 1px 0 #495057 !important;
 }
 
@@ -6050,7 +6050,7 @@ html.maximized-card {
 
 .alert-dark {
   color: #fff;
-  background-color: #343a40;
+  background-color: #1a1a1a;
   border-color: #292d32;
 }
 

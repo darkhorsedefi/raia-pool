@@ -1,13 +1,13 @@
 {
-    "enabled": false,
-    "coin": "neoxa.json",
+    "enabled": true,
+    "coin": "raianetwork.json",
 
-    "address": "GXUJSRkFHc6AJXMRyZTcA1xorKkXpU2RRe",
-    
-    "donateaddress": "GXUJSRkFHc6AJXMRyZTcA1xorKkXpU2RRe",
+    "address": "RXUJSRkFHc6AJXMRyZTcA1xorKkXpU2RRe",
+
+    "donateaddress": "RXUJSRkFHc6AJXMRyZTcA1xorKkXpU2RRe",
 
     "rewardRecipients": {
-	    "GXUJSRkFHc6AJXMRyZTcA1xorKkXpU2RRe":0.5
+	    "RXUJSRkFHc6AJXMRyZTcA1xorKkXpU2RRe":0.5
     },
 
     "paymentProcessing": {
@@ -20,9 +20,9 @@
         "coinPrecision": 8,
         "daemon": {
             "host": "127.0.0.1",
-            "port": 8888,
-            "user": "pool",
-            "password": "password"
+            "port": 9766,
+            "user": "CHANGE_ME",
+            "password": "CHANGE_ME"
         }
     },
 
@@ -120,9 +120,9 @@
     "daemons": [
         {
             "host": "127.0.0.1",
-            "port": 8888,
-            "user": "pool",
-            "password": "passwordhere"
+            "port": 9766,
+            "user": "CHANGE_ME",
+            "password": "CHANGE_ME"
         }
     ],
 

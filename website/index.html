@@ -8,13 +8,13 @@
 	{{ if ((it.portalConfig.pagedesc !== "undefined") & (it.portalConfig.pagedesc !== "")) { }}
 		<meta name="description" content="{{=it.portalConfig.pagedesc}}" />
 	{{ } else { }}
-		<meta name="description" content="An KawPoW algorithm mining pool - https://github.com/DirtyHarryDev/nomp-kawpow-pool" />    
+		<meta name="description" content="A reliable, low fee, easy to use mining pool for RAIA! No matter your experience with mining cryptocurrency, we make it easy! Get started mining today!" />    
 	{{ } }}
 	<!-- Page Keywords -->
 	{{ if ((it.portalConfig.pagekeywds !== "undefined") & (it.portalConfig.pagekeywds !== "")) { }}
 		<meta name="keywords" content="{{=it.portalConfig.pagekeywds}}" />
 	{{ } else { }}
-		<meta name="keywords" content="KawPoW, NOMP, node-open-mining-portal, pool, mining pool, mining, cryptocurrency, crypto, ravencoin, satocoin" />
+		<meta name="keywords" content="GPU,CPU,Hash,Hashrate,Cryptocurrency,Crypto,Mining,Pool,Raia,Easy,Simple,How,To" />
 	{{ } }}
 	<!-- Page Author -->
 	{{ if ((it.portalConfig.pageauthor !== "undefined") & (it.portalConfig.pageauthor !== "")) { }}
@@ -26,7 +26,7 @@
 	{{ if ((it.portalConfig.pagetitle !== "undefined") & (it.portalConfig.pagetitle !== "")) { }}
 		<title>{{=it.portalConfig.pagetitle}}</title>
 	{{ } else { }}
-		<title>KawPoW Mining Pool - https://github.com/DirtyHarryDev/nomp-kawpow-pool</title>
+		<title>Pool - RAIA Network</title>
 	{{ } }}
 	<link rel="icon" type="image/png" href="/static/img/favicon.png" />
         <link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' crossorigin="anonymous" />           
@@ -192,7 +192,9 @@ footer iframe {
 		{{ } else { }}
 			<span style="font-size: 18px; color: white;">&nbsp;&nbsp;<b>{{=it.portalConfig.poolname}}</b></span>
 		{{ } }}
+		<!-- Discord
 		<span style="font-size: 18px; color: white;"><i>{{=it.portalConfig.discord}}<a href="{{=it.portalConfig.discordlink}}" target="_blank"><img src="/static/img/discord.png" height="32px" />&nbsp;&nbsp;&nbsp;&nbsp;</a></i></span>
+		-->
 		</nav>
 	</header>
 	<div id="wrapper">
@@ -204,9 +206,11 @@ footer iframe {
 				<li>
 					<a href="/"><i class="fas fa-home sidebar-icon text-success"></i>&nbsp;Home</a>
 				</li>
+				<!-- News
 				<li>
 					<a href="/news"><i class="fas fa-newspaper sidebar-icon icon-blue"></i>&nbsp;News</a>
 				</li>
+				 -->
 				<li>
 					<a href="/getting_started"><i class="fa fa-user-plus sidebar-icon icon-blue"></i>Add Miner</a>
 				</li>
@@ -241,6 +245,7 @@ footer iframe {
 				<li>
 					<a href="/blocks_found"><i class="fas fa-cubes sidebar-icon icon-blue"></i>&nbsp;Blocks</a>
 				</li>
+				<!-- Block Explorers
 				<li>
 					<a class="sidebar-link" href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false"><i class="fas fa-project-diagram sidebar-icon icon-blue"></i>&nbsp;Block Explorers</a>
 					<ul class="collapse list-unstyled" id="homeSubmenu2">
@@ -252,6 +257,7 @@ footer iframe {
 						<p></p>
 					</ul>
 				</li>
+				-->
 				<li>
 					<a class="sidebar-link" href="#homeSubmenu7" data-toggle="collapse" aria-expanded="false"><i class="fas fa-robot sidebar-icon icon-blue"></i>Miners</a>
 					<ul class="collapse list-unstyled" id="homeSubmenu7">
@@ -285,9 +291,6 @@ footer iframe {
 					<a class="sidebar-link" href="#homeSubmenu4" data-toggle="collapse" aria-expanded="false"><i class="fas fa-link sidebar-icon icon-blue"></i>&nbsp;Links</a>
 					<ul class="collapse list-unstyled" id="homeSubmenu4">
 						<li>
-							<a href="https://pool.alphax.pro/" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/static/img/favicon.png" style="height: 24px;width: 24px;" alt="icon" />&nbsp;AlphaX Pool</a>
-						</li>
-						<li>
 							<a href="https://discord.com/" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/static/img/discordlogo.png" style="height: 24px;width: 24px;" alt="icon" />&nbsp;Discord</a>
 						</li>
 						<li>
@@ -312,30 +315,9 @@ footer iframe {
 	</div>
 	<footer>
 		<div class="footer_container">
-			<div>
-			<!-- BTC Donations -->
-			{{ if ((it.portalConfig.btcdonations !== "undefined") & (it.portalConfig.btcdonations !== "")) { }}
-				<span>BTC Donations: {{=it.portalConfig.btcdonations}}</span><br />
-			{{ } else { }}
-				<span>BTC Donations: 1GXEm97T5iXAeYHBj2GuL3TKKRpkNas4Qt</span><br />	    
-			{{ } }}
-			<!-- LTC Donations -->
-			{{ if ((it.portalConfig.ltcdonations !== "undefined") & (it.portalConfig.ltcdonations !== "")) { }}
-				<span>LTC Donations: {{=it.portalConfig.ltcdonations}}</span><br />
-			{{ } else { }}
-				<span>LTC Donations: LWBZWLmjqeQFnMqS9NctcdSx3TEYHyzfGz</span><br />
-			{{ } }}
-			<!-- RVN Donations -->
-			{{ if ((it.portalConfig.rvndonations !== "undefined") & (it.portalConfig.rvndonations !== "")) { }}
-				<span>RVN Donations: {{=it.portalConfig.rvndonations}}</span><br />
-			{{ } else { }}
-				<span>RVN Donations: RNs3ne88DoNEnXFTqUrj6zrYejeQpcj4jk</span><br />
-			{{ } }}
-			</div>
-			<br>
-			<span>Powered by <a href="https://github.com/DirtyHarryDev/nomp-kawpow-pool" >Dirty Harry KawPoW Pool</a></span>
+			<span>Powered by <a href="https://raianetwork.xzy" >RAIA Network</a></span>
 			<div id="communityFooter">
-				<iframe src="//ghbtns.com/github-btn.html?user=DirtyHarryDev&repo=nomp-kawpow-pool&type=watch&count=true"
+				<iframe src="//ghbtns.com/github-btn.html?user=Raianetwork&repo=Raia-Network-core&type=watch&count=true"
                             	allowtransparency="true" frameborder="0" scrolling="0" width="80" height="20"></iframe>
 			</div>
 		</div>
